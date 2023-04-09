@@ -23,14 +23,12 @@ internal class Program
         Console.WriteLine("Berapa hari yang lalu(perkiraan) anda terakhir memiliki gejala demam ?");
         int inputHari = Convert.ToInt32(Console.ReadLine());
 
-        if((config1.covidConfig.satuan_suhu == "celcius" &&(inputSuhu >= 36.5 && inputSuhu < 37.5)) || (config1.covidConfig.satuan_suhu == "fahreinheit" && (inputSuhu >= 97.7 && inputSuhu < 99.5))) 
+        if(((config1.covidConfig.satuan_suhu == "celcius" &&(inputSuhu >= 36.5 && inputSuhu < 37.5)) 
+            || (config1.covidConfig.satuan_suhu == "fahreinheit" && (inputSuhu >= 97.7 && inputSuhu < 99.5))) 
+            && inputHari > config1.covidConfig.batas_hari_demam) 
         {
             Console.WriteLine(config1.covidConfig.pesan_diterima);
         } 
-        else if (inputHari > config1.covidConfig.batas_hari_demam)
-        {
-            Console.WriteLine(config1.covidConfig.pesan_diterima);
-        }
         else
         {
             Console.WriteLine(config1.covidConfig.pesan_ditolak);
